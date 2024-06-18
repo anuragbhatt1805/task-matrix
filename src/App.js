@@ -20,9 +20,6 @@ function App() {
       body: `This is a notification ${count}`,
       silent: true,
     };
-    console.log(window?.username);
-    console.log(window?.notification);
-    // window.notification?.NotifyUser(options);
     new window.Notification(options.title, {body:   options.body})
     .onclick = () => { setCount(100) };
   }

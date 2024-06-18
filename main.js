@@ -32,6 +32,8 @@ function createWindow() {
   win.webContents.openDevTools();
 }
 
+app.name = 'Task Matrix';
+
 app.on('ready', () => {
   createWindow();
 });
