@@ -14,7 +14,16 @@ function App() {
   const [count, setCount] = useState(0);
   document.title = `Welcome: ${username}`;
 
-  console.log(window?.username);
+  function handleNotification() {
+    const options = {
+      title: 'Notification',
+      body: `This is a notification ${count}`,
+      silent: true,
+    };
+    console.log(window?.username);
+    console.log(window?.notification);
+    window.notification?.NotifyUser(options);
+  }
 
   return (
     <div className="App">
@@ -22,7 +31,11 @@ function App() {
       <br />
       My self {username}
       <br />
-      <button className="bg-gray-900 text-white" onClick={() => setCount(count + 1)}>
+      <button className="bg-gray-900 text-white" onClick={(e) => {
+        e.preventDefault();
+        setCount(count + 1);
+        handleNotification();
+      }}>
         count: {count}
       </button>
     </div>

@@ -27,8 +27,8 @@ function createWindow() {
     },
   });
 
-  // win.loadURL('http://localhost:3000');
-  win.loadFile(path.join(__dirname, 'build', 'index.html'))
+  win.loadURL('http://localhost:3000');
+  // win.loadFile(path.join(__dirname, 'build', 'index.html'))
   win.webContents.openDevTools();
 }
 
