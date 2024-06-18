@@ -1,4 +1,5 @@
-const { contextBridge, Notification } = require('electron');
+const { contextBridge } = require('electron');
+const { Notification } = require('electron/main');
 const os = require('os');
 
  function getUser() {   
@@ -6,6 +7,7 @@ const os = require('os');
 }
 
 function NotifyUser(options) {
+  console.log(Notification.isSupported());
   console.log(options);
   new Notification({ title:options.title, body: options.message }).show();
   return "Notified";

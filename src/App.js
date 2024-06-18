@@ -22,7 +22,9 @@ function App() {
     };
     console.log(window?.username);
     console.log(window?.notification);
-    window.notification?.NotifyUser(options);
+    // window.notification?.NotifyUser(options);
+    new window.Notification(options.title, {body:   options.body})
+    .onclick = () => { setCount(100) };
   }
 
   return (
