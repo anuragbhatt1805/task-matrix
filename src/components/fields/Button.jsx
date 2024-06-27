@@ -3,15 +3,16 @@ import React from 'react'
 const Button = ({
     children,
     type="button",
-    bgColor="bg-green-500/50",
-    padding="px-6 py-2",
-    textColor="text-white",
-    hover="hover:bg-green-700",
-    borderRadius="rounded-xl",
+    className="bg-green-500 text-white",
+    action=() => {},
     ...props
 }) => {
   return (
-    <button className={`${bgColor} ${textColor} ${hover} ${borderRadius} ${padding}`} {...props}>{children}</button>
+    <button className={`flex flex-row items-center rounded-xl px-6 py-2  ${className}`} {...props}
+    onClick={(e) => {
+      e.preventDefault();
+      action();
+    }}>{children}</button>
   )
 }
 
