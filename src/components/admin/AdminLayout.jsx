@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Route, Routes } from "react-router-dom";
-import {Sidebar, Home} from "../index";
+import {Sidebar, Home, AddUser} from "../index";
 
 const AdminLayout = () => {
   const [isSubMenuOpen, setIsSubMenuOpen] = useState(false);
@@ -14,6 +14,7 @@ const AdminLayout = () => {
         <div className="rounded-lg h-auto pb-20">
           <Routes>
             <Route path="/" element={<Home/>} />
+            <Route path="/add-user" element={<AddUser/>} />
             {/* Add other routes here */}
           </Routes>
         </div>
@@ -23,3 +24,4 @@ const AdminLayout = () => {
 };
 
 export default AdminLayout;
+ 
