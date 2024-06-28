@@ -1,7 +1,5 @@
 import React from 'react';
-
-import { Route, Routes } from 'react-router-dom';
-import { Login, AdminLayout } from '.';
+import { AdminLayout } from '.';
 
 const Layout = () => {
   return (
