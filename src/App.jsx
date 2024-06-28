@@ -1,16 +1,14 @@
-// import { Routes } from "react-router-dom";
-import { Login } from "./components";
+import React from 'react';
+import { Route, Routes } from 'react-router-dom';
+// import Layout from './components/Layout';
+import { AdminLayout } from './components/index';
 
-function App() {
-
+const App = () => {
   return (
-    <div>
-      {/* <Routes> */}
-      <Login/>
-
-      {/* </Routes> */}
-    </div>
+    <Routes>
+      <Route path="/*" element={<AdminLayout />} />
+    </Routes>
   );
-}
+};
 
 export default App;
