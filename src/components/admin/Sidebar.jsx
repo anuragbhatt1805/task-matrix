@@ -22,13 +22,13 @@ const Sidebar = ({ isSubMenuOpen, setIsSubMenuOpen }) => {
   };
 
   return (
-    <div className="bg-gray-800 text-white left-0 fixed w-16 h-screen flex flex-col gap-4 py-4">
-      <nav className="w-full flex flex-wrap px-auto justify-center mt-5">
+    <div className="bg-gray-800 text-white left-0 top-0 fixed w-16 h-screen flex flex-col gap-4">
+      <nav className="w-full flex flex-wrap px-auto justify-center">
         <ul className="flex flex-col">
           <li>
             <button
               onClick={() => handleClick("user")}
-              className={`flex items-center w-full py-6 px-2 relative ${
+              className={`flex items-center w-full py-5 px-2 relative ${
                 activeMenu === "user" ? "bg-gray-700" : ""
               }`}
             >
@@ -41,7 +41,7 @@ const Sidebar = ({ isSubMenuOpen, setIsSubMenuOpen }) => {
               <div className="absolute top-0 w-64 h-screen bg-slate-700 ml-12">
                 <ul className="pl-6 flex flex-col gap-5 py-5">
                   <li>
-                    <Link to="/add-user" className="block py-2">
+                    <Link to="/add-user" className={`block py-2 ${activeMenu === "add-user" ? "bg-green-700" : ""}`}>
                       Add User
                     </Link>
                   </li>
@@ -56,7 +56,7 @@ const Sidebar = ({ isSubMenuOpen, setIsSubMenuOpen }) => {
                     </Link>
                   </li>
                   <li>
-                    <Link to="/session-record" className="block py-2">
+                    <Link to="/task-record" className="block py-2">
                       Task Records
                     </Link>
                   </li>
@@ -78,15 +78,21 @@ const Sidebar = ({ isSubMenuOpen, setIsSubMenuOpen }) => {
             </button>
             {activeMenu === "project" && (
               <div className="absolute top-0 w-64 h-screen bg-slate-700 ml-12">
-                <ul className="pl-6">
+                 <ul className="pl-6 flex flex-col gap-5 py-5">
+                  <li>
+                    <Link to="/manage-project" className="block py-2">
+                      Manage Team
+                    </Link>
+                  </li>
                   <li>
                     <Link to="/add-project" className="block py-2">
                       Add Project
                     </Link>
                   </li>
+
                   <li>
-                    <Link to="/manage-project" className="block py-2">
-                      Manage Project
+                    <Link to="/all-project" className="block py-2">
+                     All Project
                     </Link>
                   </li>
                 </ul>
@@ -107,15 +113,15 @@ const Sidebar = ({ isSubMenuOpen, setIsSubMenuOpen }) => {
             </button>
             {activeMenu === "task" && (
               <div className="absolute top-0 w-64 h-screen bg-slate-700 ml-12">
-                <ul className="pl-6">
+                 <ul className="pl-6 flex flex-col gap-5 py-5">
                   <li>
                     <Link to="/add-task" className="block py-2">
                       Add Task
                     </Link>
                   </li>
                   <li>
-                    <Link to="/manage-task" className="block py-2">
-                      Manage Task
+                    <Link to="/all-task" className="block py-2">
+                     All Task
                     </Link>
                   </li>
                 </ul>
