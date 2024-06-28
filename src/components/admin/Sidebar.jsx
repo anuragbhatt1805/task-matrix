@@ -8,6 +8,9 @@ import {
   IoMdCheckmarkCircle,
 } from "react-icons/io";
 import { CgProfile } from "react-icons/cg";
+import { BsSuitcaseLgFill } from "react-icons/bs";
+import { IoAddCircle } from "react-icons/io5";
+import { BiCalendar } from "react-icons/bi";
 
 const Sidebar = ({ isSubMenuOpen, setIsSubMenuOpen }) => {
   const [activeMenu, setActiveMenu] = useState("");
@@ -20,41 +23,12 @@ const Sidebar = ({ isSubMenuOpen, setIsSubMenuOpen }) => {
 
   return (
     <div className="bg-gray-800 text-white left-0 fixed w-16 h-screen flex flex-col gap-4 py-4">
-      <nav className="w-full flex px-auto justify-center">
-        <ul>
-          <li>
-            <button
-              onClick={() => handleClick("profile")}
-              className={`flex items-center w-full py-2 px-2 relative ${
-                activeMenu === "profile" ? "bg-gray-700" : ""
-              }`}
-            >
-              <CgProfile className="text-4xl" />
-              {activeMenu === "profile" && (
-                <div className="absolute left-0 top-0 h-full w-1 bg-white"></div>
-              )}
-            </button>
-            {activeMenu === "profile" && (
-              <div className="absolute top-0 w-64 h-screen bg-slate-700 ml-12">
-                <ul className="pl-6">
-                  <li>
-                    <Link to="/add-profile" className="block py-2">
-                      Add Profile
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to="/manage-profile" className="block py-2">
-                      Manage Profile
-                    </Link>
-                  </li>
-                </ul>
-              </div>
-            )}
-          </li>
+      <nav className="w-full flex flex-wrap px-auto justify-center mt-5">
+        <ul className="flex flex-col">
           <li>
             <button
               onClick={() => handleClick("user")}
-              className={`flex items-center w-full py-2 px-2 relative ${
+              className={`flex items-center w-full py-6 px-2 relative ${
                 activeMenu === "user" ? "bg-gray-700" : ""
               }`}
             >
@@ -65,15 +39,54 @@ const Sidebar = ({ isSubMenuOpen, setIsSubMenuOpen }) => {
             </button>
             {activeMenu === "user" && (
               <div className="absolute top-0 w-64 h-screen bg-slate-700 ml-12">
-                <ul className="pl-6">
+                <ul className="pl-6 flex flex-col gap-5 py-5">
                   <li>
                     <Link to="/add-user" className="block py-2">
-                      <IoMdPeople />
+                      Add User
                     </Link>
                   </li>
                   <li>
-                    <Link to="/manage-user" className="block py-2">
-                      Manage User
+                    <Link to="/calendar" className="block py-2">
+                      Calendar
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/session-record" className="block py-2">
+                      Session Records
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/session-record" className="block py-2">
+                      Task Records
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+            )}
+          </li>
+          <li>
+            <button
+              onClick={() => handleClick("project")}
+              className={`flex items-center w-full py-7 px-2 relative ${
+                activeMenu === "project" ? "bg-gray-700" : ""
+              }`}
+            >
+              <BsSuitcaseLgFill className="text-3xl" />
+              {activeMenu === "project" && (
+                <div className="absolute left-0 top-0 h-full w-1 bg-white"></div>
+              )}
+            </button>
+            {activeMenu === "project" && (
+              <div className="absolute top-0 w-64 h-screen bg-slate-700 ml-12">
+                <ul className="pl-6">
+                  <li>
+                    <Link to="/add-project" className="block py-2">
+                      Add Project
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/manage-project" className="block py-2">
+                      Manage Project
                     </Link>
                   </li>
                 </ul>
@@ -83,7 +96,7 @@ const Sidebar = ({ isSubMenuOpen, setIsSubMenuOpen }) => {
           <li>
             <button
               onClick={() => handleClick("task")}
-              className={`flex items-center w-full py-2 px-2 relative ${
+              className={`flex items-center w-full py-6 px-2 relative ${
                 activeMenu === "task" ? "bg-gray-700" : ""
               }`}
             >
