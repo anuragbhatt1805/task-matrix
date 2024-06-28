@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import React, { useState } from "react";
+import React from "react";
 import { Button, Input } from "../index";
 import Logo from "../../assets/logo.png";
 import { Formik } from "formik";
@@ -26,6 +26,9 @@ const Login = () => {
               ) {
                 errors.email = "Invalid email address";
               }
+              if (!values.password) {
+                errors.password = "Password is required";
+              }
               return errors;
             }}
             onSubmit={(values, { setSubmitting }) => {
@@ -40,29 +43,33 @@ const Login = () => {
               errors,
               touched,
               handleChange,
+              handleBlur,
               handleSubmit,
               isSubmitting,
             }) => (
               <form onSubmit={handleSubmit} className="w-[75%]">
                 <Input
                   label="Email"
+                  name="email"
                   type="email"
                   placeholder="Enter your email address"
                   onChange={handleChange}
+                  onBlur={handleBlur}
                   value={values.email}
                 />
-                {errors.email && touched.email && errors.email}
+                {errors.email && touched.email && <div className="text-red-600">{errors.email}</div>}
                 <Input
                   label="Password"
+                  name="password"
                   type="password"
                   placeholder="Enter your password"
                   onChange={handleChange}
+                  onBlur={handleBlur}
                   value={values.password}
                 />
-                {errors.password && touched.password && errors.password}
+                {errors.password && touched.password && <div className="text-red-600">{errors.password}</div>}
                 <Button
                   type="submit"
-                  
                   disabled={isSubmitting}
                   action={() => {
                     window.alert("Inkalab zindabad");
