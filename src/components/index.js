@@ -5,7 +5,7 @@ import Input from "./fields/Input";
 import AdminLayout from "./admin/AdminLayout";
 import Sidebar from "./admin/Sidebar";
 import Home from "./admin/Home";
-import AddUser from "./admin/AddUser";
-import Layout from "./Layout"
+import Layout from "./Layout";
+import AddUser from "./admin/adduser/AddUser";
 
 export {Login, AddUser , Layout, Button, Input, AdminLayout, Sidebar, Home};

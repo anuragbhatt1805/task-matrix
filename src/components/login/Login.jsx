@@ -1,8 +1,7 @@
-// src/components/Login.js
 import React from "react";
 import { Button, Input } from "../index";
 import Logo from "../../assets/logo.png";
-import { Formik } from "formik";
+import { Formik, Form, Field, ErrorMessage } from "formik";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from 'react-redux';
 import { login } from '../../components/features/userSlice';
@@ -44,34 +43,25 @@ const Login = () => {
               return errors;
             }}
             onSubmit={(values, { setSubmitting }) => {
-              setTimeout(() => {
-                const { email, password } = values;
-                let userType = null;
-                if (
-                  email === credentials.admin.email &&
-                  password === credentials.admin.password
-                ) {
-                  userType = "admin";
-                } else if (
-                  email === credentials.user.email &&
-                  password === credentials.user.password
-                ) {
-                  userType = "user";
-                } else if (
-                  email === credentials.manager.email &&
-                  password === credentials.manager.password
-                ) {
-                  userType = "manager";
-                }
+              const { email, password } = values;
+              let userType = null;
+              if (email === credentials.admin.email && password === credentials.admin.password) {
+                userType = "admin";
+              } else if (email === credentials.user.email && password === credentials.user.password) {
+                userType = "user";
+              } else if (email === credentials.manager.email && password === credentials.manager.password) {
+                userType = "manager";
+              }
 
-                if (userType) {
-                  dispatch(login(userType));
-                  navigate("/");
-                } else {
-                  alert("Invalid email or password");
-                }
-                setSubmitting(false);
-              }, 400);
+              if (userType) {
+                console.log('User Type:', userType);
+                dispatch(login({ userType }));
+                localStorage.setItem("userType", userType);
+                navigate("/");
+              } else {
+                alert("Invalid email or password");
+              }
+              setSubmitting(false);
             }}
           >
             {({
@@ -83,8 +73,9 @@ const Login = () => {
               handleSubmit,
               isSubmitting,
             }) => (
-              <form onSubmit={handleSubmit} className="w-[75%]">
-                <Input
+              <Form onSubmit={handleSubmit} className="w-[75%]">
+                <Field
+                  as={Input}
                   label="Email"
                   name="email"
                   type="email"
@@ -93,10 +84,10 @@ const Login = () => {
                   onBlur={handleBlur}
                   value={values.email}
                 />
-                {errors.email && touched.email && (
-                  <div className="text-red-600">{errors.email}</div>
-                )}
-                <Input
+                <ErrorMessage name="email" component="div" className="text-red-600" />
+                
+                <Field
+                  as={Input}
                   label="Password"
                   name="password"
                   type="password"
@@ -105,32 +96,15 @@ const Login = () => {
                   onBlur={handleBlur}
                   value={values.password}
                 />
-                {errors.password && touched.password && (
-                  <div className="text-red-600">{errors.password}</div>
-                )}
+                <ErrorMessage name="password" component="div" className="text-red-600" />
+                
                 <Button
                   type="submit"
                   disabled={isSubmitting}
-                  action={() => {
-                    window.alert("Inkalab zindabad");
-                    const options = {
-                      title: "Notification",
-                      body: `This is a notification ${values.email}`,
-                      silent: true,
-                    };
-
-                    console.log(window?.username);
-                    console.log(window?.notification);
-                    // window.notification?.NotifyUser(options);
-                    new window.Notification(options.title, {
-                      body: options.body,
-                    });
-                  }}
-
                 >
                   Login
                 </Button>
-              </form>
+              </Form>
             )}
           </Formik>
         </div>

@@ -5,7 +5,7 @@ import { Routes, Route } from 'react-router-dom';
 const Layout = () => {
   return (
     <Routes>
-      <Route path="/" element={<AdminLayout />} />
+      <Route path="/*" element={<AdminLayout />} />
       <Route path="/login" element={<Login />} />
     </Routes>
   );
