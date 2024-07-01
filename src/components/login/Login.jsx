@@ -1,10 +1,22 @@
-/* eslint-disable no-unused-vars */
+// src/components/Login.js
 import React from "react";
 import { Button, Input } from "../index";
 import Logo from "../../assets/logo.png";
 import { Formik } from "formik";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from 'react-redux';
+import { login } from '../../components/features/userSlice';
+
+const credentials = {
+  admin: { email: "admin@example.com", password: "admin123" },
+  user: { email: "user@example.com", password: "user123" },
+  manager: { email: "manager@example.com", password: "manager123" },
+};
 
 const Login = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
   return (
     <div className="bg-green-500 h-screen w-screen">
       <div className="flex justify-center items-center h-full bg-white bg-opacity-30">
@@ -33,7 +45,31 @@ const Login = () => {
             }}
             onSubmit={(values, { setSubmitting }) => {
               setTimeout(() => {
-                alert(JSON.stringify(values, null, 2));
+                const { email, password } = values;
+                let userType = null;
+                if (
+                  email === credentials.admin.email &&
+                  password === credentials.admin.password
+                ) {
+                  userType = "admin";
+                } else if (
+                  email === credentials.user.email &&
+                  password === credentials.user.password
+                ) {
+                  userType = "user";
+                } else if (
+                  email === credentials.manager.email &&
+                  password === credentials.manager.password
+                ) {
+                  userType = "manager";
+                }
+
+                if (userType) {
+                  dispatch(login(userType));
+                  navigate("/");
+                } else {
+                  alert("Invalid email or password");
+                }
                 setSubmitting(false);
               }, 400);
             }}
@@ -57,7 +93,9 @@ const Login = () => {
                   onBlur={handleBlur}
                   value={values.email}
                 />
-                {errors.email && touched.email && <div className="text-red-600">{errors.email}</div>}
+                {errors.email && touched.email && (
+                  <div className="text-red-600">{errors.email}</div>
+                )}
                 <Input
                   label="Password"
                   name="password"
@@ -67,7 +105,9 @@ const Login = () => {
                   onBlur={handleBlur}
                   value={values.password}
                 />
-                {errors.password && touched.password && <div className="text-red-600">{errors.password}</div>}
+                {errors.password && touched.password && (
+                  <div className="text-red-600">{errors.password}</div>
+                )}
                 <Button
                   type="submit"
                   disabled={isSubmitting}
@@ -86,6 +126,7 @@ const Login = () => {
                       body: options.body,
                     });
                   }}
+
                 >
                   Login
                 </Button>

@@ -2,18 +2,15 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import {
-  IoMdPersonAdd,
   IoMdPeople,
-  IoMdCheckmark,
   IoMdCheckmarkCircle,
 } from "react-icons/io";
-import { CgProfile } from "react-icons/cg";
 import { BsSuitcaseLgFill } from "react-icons/bs";
-import { IoAddCircle } from "react-icons/io5";
-import { BiCalendar } from "react-icons/bi";
 
 const Sidebar = ({ isSubMenuOpen, setIsSubMenuOpen }) => {
   const [activeMenu, setActiveMenu] = useState("");
+  const userType = localStorage.getItem("userType");
+
 
   const handleClick = (menu) => {
     const newActiveMenu = activeMenu === menu ? "" : menu;
@@ -39,7 +36,8 @@ const Sidebar = ({ isSubMenuOpen, setIsSubMenuOpen }) => {
             </button>
             {activeMenu === "user" && (
               <div className="absolute top-0 w-64 h-screen bg-slate-700 ml-12">
-                <ul className="pl-6 flex flex-col gap-5 py-5">
+                {userType ==="admin" && (
+                  <ul className="pl-6 flex flex-col gap-5 py-5">
                   <li>
                     <Link to="/add-user" className={`block py-2 ${activeMenu === "add-user" ? "bg-green-700" : ""}`}>
                       Add User
@@ -60,7 +58,62 @@ const Sidebar = ({ isSubMenuOpen, setIsSubMenuOpen }) => {
                       Task Records
                     </Link>
                   </li>
+                  <li>
+                    <Link to="/task-record" className="block py-2">
+                      Notification
+                    </Link>
+                  </li>
                 </ul>
+                )}
+                {userType ==="manager" && (
+                  <ul className="pl-6 flex flex-col gap-5 py-5">
+                  <li>
+                    <Link to="/calendar" className="block py-2">
+                      Calendar
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/session-record" className="block py-2">
+                      Session Records
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/task-record" className="block py-2">
+                      Task Records
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/task-record" className="block py-2">
+                      Notification
+                    </Link>
+                  </li>
+                </ul>
+                )}
+                {userType ==="user" && (
+                  <ul className="pl-6 flex flex-col gap-5 py-5">
+                  <li>
+                    <Link to="/calendar" className="block py-2">
+                      Calendar
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/session-record" className="block py-2">
+                      Session Records
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/task-record" className="block py-2">
+                      Task Records
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/task-record" className="block py-2">
+                      Notification
+                    </Link>
+                  </li>
+                </ul>
+                )}
+                
               </div>
             )}
           </li>
@@ -78,24 +131,50 @@ const Sidebar = ({ isSubMenuOpen, setIsSubMenuOpen }) => {
             </button>
             {activeMenu === "project" && (
               <div className="absolute top-0 w-64 h-screen bg-slate-700 ml-12">
-                 <ul className="pl-6 flex flex-col gap-5 py-5">
+                {userType === "admin" && (
+                   <ul className="pl-6 flex flex-col gap-5 py-5">
+                   <li>
+                     <Link to="/manage-project" className="block py-2">
+                       Manage Team
+                     </Link>
+                   </li>
+                   <li>
+                     <Link to="/add-project" className="block py-2">
+                       Add Project
+                     </Link>
+                   </li>
+                   <li>
+                     <Link to="/all-project" className="block py-2">
+                      All Project
+                     </Link>
+                   </li>
+                 </ul>
+                )}
+                {userType === "user" && (
+                  <ul className="pl-6 flex flex-col gap-5 py-5">
+                    <li>
+                      <Link to="/all-project" className="block py-2">
+                        All Project
+                      </Link>
+                    </li>
+                  </ul>
+                )}
+                {userType === "manager" && (
+                  <ul className="pl-6 flex flex-col gap-5 py-5">
                   <li>
                     <Link to="/manage-project" className="block py-2">
                       Manage Team
                     </Link>
                   </li>
                   <li>
-                    <Link to="/add-project" className="block py-2">
-                      Add Project
-                    </Link>
-                  </li>
-
-                  <li>
                     <Link to="/all-project" className="block py-2">
                      All Project
                     </Link>
                   </li>
                 </ul>
+                )}
+
+                
               </div>
             )}
           </li>

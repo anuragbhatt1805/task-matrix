@@ -1,14 +1,13 @@
 import React from 'react';
-import { AdminLayout } from '.';
+import { AdminLayout, Login } from '../components';
+import { Routes, Route } from 'react-router-dom';
 
 const Layout = () => {
   return (
-    <div>
-        {/* <Routes>
-            <Route path='/' element={<Login/>}/>
-        </Routes> */}
-      <AdminLayout />
-    </div>
+    <Routes>
+      <Route path="/" element={<AdminLayout />} />
+      <Route path="/login" element={<Login />} />
+    </Routes>
   );
 };
 
