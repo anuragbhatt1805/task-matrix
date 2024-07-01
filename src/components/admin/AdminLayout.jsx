@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Route, Routes } from "react-router-dom";
-import { Sidebar, Home, AddUser } from "../index";
+import { Sidebar, Home, AddUser, AddProject, AddTask } from "../index";
 
 const AdminLayout = () => {
   const [isSubMenuOpen, setIsSubMenuOpen] = useState(false);
@@ -15,6 +15,8 @@ const AdminLayout = () => {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/add-user" element={<AddUser />} />
+            <Route path="/add-project" element={<AddProject />} />
+            <Route path="/add-task" element={<AddTask />} />
           </Routes>
         </div>
       </div>
