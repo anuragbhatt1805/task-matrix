@@ -1,6 +1,7 @@
 import Login from './login/Login'
 import Button from './fields/Button'
 import Input from './fields/Input'
+import Select from './fields/Select'
 
 import AdminLayout from './admin/AdminLayout'
 import Sidebar from './admin/Sidebar'
@@ -12,6 +13,7 @@ import AddTask from './admin/addtask/AddTask'
 
 export {
   Login,
+  Select,
   AddProject,
   AddTask,
   AddUser,
