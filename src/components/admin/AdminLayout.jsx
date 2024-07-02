@@ -7,7 +7,7 @@ const AdminLayout = () => {
 
   return (
     <div className="flex min-h-screen">
-      <div className={`${isSubMenuOpen ? ' w-16' : ' w-24'} h-screen flex-shrink-0`}>
+      <div className={`${isSubMenuOpen ? ' w-16' : ' w-20'} h-screen flex-shrink-0`}>
         <Sidebar isSubMenuOpen={isSubMenuOpen} setIsSubMenuOpen={setIsSubMenuOpen} />
       </div>
       <div className={`flex-1 overflow-y-auto p-5 transition-all duration-300 ${isSubMenuOpen ? ' ml-60' : ''}`}>
