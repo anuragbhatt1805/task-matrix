@@ -385,8 +385,8 @@ const Sidebar = ({ isSubMenuOpen, setIsSubMenuOpen }) => {
                     </li>
                     <li>
                       <Link
-                        to="/manage-project"
-                        onClick={() => handleSubMenuClick("manage-project")}
+                        to="/all-project"
+                        onClick={() => handleSubMenuClick("all-project")}
                         className={`block py-2 ${
                           activeSubMenu === "manage-project"
                             ? "bg-white text-gray-900 pl-5 font-bold"
