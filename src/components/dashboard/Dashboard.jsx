@@ -1,7 +1,7 @@
 // src/components/AdminLayout.js
 import React, { useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { Sidebar, Home, AddUser, AddProject,AddTask, Calendar } from '../index';
+import { Sidebar, Home, AddUser, AddProject,AddTask, Calendar, AddFabricator } from '../index';
 
 const Dashboard = () => {
   
@@ -21,6 +21,7 @@ const Dashboard = () => {
             <Route path="/calendar" element={<Calendar />} />
             <Route path="/add-project" element={<AddProject />} />
             <Route path="/add-task" element={<AddTask />} />
+            <Route path="/add-fabricator" element={<AddFabricator />} />
           </Routes>
         </div>
       </div>

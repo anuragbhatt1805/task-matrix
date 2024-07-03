@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import { IoMdPeople, IoMdCheckmarkCircle } from "react-icons/io";
 import { BsSuitcaseLgFill } from "react-icons/bs";
+import { FaLayerGroup } from "react-icons/fa";
 
 const Sidebar = ({ isSubMenuOpen, setIsSubMenuOpen }) => {
   const [activeMenu, setActiveMenu] = useState("");
@@ -221,6 +222,124 @@ const Sidebar = ({ isSubMenuOpen, setIsSubMenuOpen }) => {
               </div>
             )}
           </li>
+          {userType === "admin"  && (
+            <li>
+              <button
+                onClick={() => handleClick("fabricator")}
+                className={`flex items-center w-full py-5 px-2 relative ${
+                  activeMenu === "fabricator" ? "bg-gray-700" : ""
+                }`}
+              >
+                <FaLayerGroup className="text-3xl" />
+                {activeMenu === "fabricator" && (
+                  <div className="absolute left-0 top-0 h-full w-1 bg-white"></div>
+                )}
+              </button>
+              {activeMenu === "fabricator" && (
+                <div className="absolute top-0 w-60 h-screen bg-slate-700 ml-12">
+                  {userType === "admin" && (
+                    <ul className="pl-6 flex flex-col gap-5 py-5">
+                      <li>
+                        <Link
+                          to="/add-fabricator"
+                          onClick={() => handleSubMenuClick("add-fabricator")}
+                          className={`block py-2 ${
+                            activeSubMenu === "add-fabricator"
+                              ? "bg-white text-gray-900 pl-5 font-bold"
+                              : ""
+                          }`}
+                        >
+                          Add Fabricator
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          to="/all-fabricator"
+                          onClick={() => handleSubMenuClick("all-fabricator")}
+                          className={`block py-2 ${
+                            activeSubMenu === "all-fabricator"
+                              ? "bg-white text-gray-900 pl-5 font-bold"
+                              : ""
+                          }`}
+                        >
+                          All Fabricators
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          to="/notification"
+                          onClick={() => handleSubMenuClick("notification")}
+                          className={`block py-2 ${
+                            activeSubMenu === "notification"
+                              ? "bg-white text-gray-900 pl-5 font-bold"
+                              : ""
+                          }`}
+                        >
+                          Notification
+                        </Link>
+                      </li>
+                    </ul>
+                  )}
+                  {userType === "manager" && (
+                    <ul className="pl-6 flex flex-col gap-5 py-5">
+                      <li>
+                        <Link
+                          to="/calendar"
+                          onClick={() => handleSubMenuClick("calendar")}
+                          className={`block py-2 ${
+                            activeSubMenu === "calendar"
+                              ? "bg-white text-gray-900 pl-5 font-bold"
+                              : ""
+                          }`}
+                        >
+                          Calendar
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          to="/session-record"
+                          onClick={() => handleSubMenuClick("session-record")}
+                          className={`block py-2 ${
+                            activeSubMenu === "session-record"
+                              ? "bg-white text-gray-900 pl-5 font-bold"
+                              : ""
+                          }`}
+                        >
+                          Session Records
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          to="/task-record"
+                          onClick={() => handleSubMenuClick("task-record")}
+                          className={`block py-2 ${
+                            activeSubMenu === "task-record"
+                              ? "bg-white text-gray-900 pl-5 font-bold"
+                              : ""
+                          }`}
+                        >
+                          Task Records
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          to="/notification"
+                          onClick={() => handleSubMenuClick("notification")}
+                          className={`block py-2 ${
+                            activeSubMenu === "notification"
+                              ? "bg-white text-gray-900 pl-5 font-bold"
+                              : ""
+                          }`}
+                        >
+                          Notification
+                        </Link>
+                      </li>
+                    </ul>
+                  )}
+                </div>
+              )}
+            </li>
+          )}
           <li>
             <button
               onClick={() => handleClick("project")}
@@ -344,92 +463,92 @@ const Sidebar = ({ isSubMenuOpen, setIsSubMenuOpen }) => {
             {activeMenu === "task" && (
               <div className="absolute top-0 w-60 h-screen bg-slate-700 ml-12">
                 {(userType === "admin" || userType === "manager") && (
-                     <ul className="pl-6 flex flex-col gap-5 py-5">
-                     <li>
-                       <Link
-                         to="/my-task"
-                         onClick={() => handleSubMenuClick("my-task")}
-                         className={`block py-2 ${
-                           activeSubMenu === "my-task"
-                             ? "bg-white text-gray-900 pl-5 font-bold"
-                             : ""
-                         }`}
-                       >
-                         My Task
-                       </Link>
-                     </li>
-                     <li>
-                       <Link
-                         to="/add-task"
-                         onClick={() => handleSubMenuClick("add-task")}
-                         className={`block py-2 ${
-                           activeSubMenu === "add-task"
-                             ? "bg-white text-gray-900 pl-5 font-bold"
-                             : ""
-                         }`}
-                       >
-                         Add Task
-                       </Link>
-                     </li>
-                     <li>
-                       <Link
-                         to="/approve-task"
-                         onClick={() => handleSubMenuClick("approve-task")}
-                         className={`block py-2 ${
-                           activeSubMenu === "approve-task"
-                             ? "bg-white text-gray-900 pl-5 font-bold"
-                             : ""
-                         }`}
-                       >
-                         Approve Task
-                       </Link>
-                     </li>
-                     <li>
-                       <Link
-                         to="/all-task"
-                         onClick={() => handleSubMenuClick("all-task")}
-                         className={`block py-2 ${
-                           activeSubMenu === "all-task"
-                             ? "bg-white text-gray-900 pl-5 font-bold"
-                             : ""
-                         }`}
-                       >
-                         All Task
-                       </Link>
-                     </li>
-                   </ul>
+                  <ul className="pl-6 flex flex-col gap-5 py-5">
+                    <li>
+                      <Link
+                        to="/my-task"
+                        onClick={() => handleSubMenuClick("my-task")}
+                        className={`block py-2 ${
+                          activeSubMenu === "my-task"
+                            ? "bg-white text-gray-900 pl-5 font-bold"
+                            : ""
+                        }`}
+                      >
+                        My Task
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        to="/add-task"
+                        onClick={() => handleSubMenuClick("add-task")}
+                        className={`block py-2 ${
+                          activeSubMenu === "add-task"
+                            ? "bg-white text-gray-900 pl-5 font-bold"
+                            : ""
+                        }`}
+                      >
+                        Add Task
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        to="/approve-task"
+                        onClick={() => handleSubMenuClick("approve-task")}
+                        className={`block py-2 ${
+                          activeSubMenu === "approve-task"
+                            ? "bg-white text-gray-900 pl-5 font-bold"
+                            : ""
+                        }`}
+                      >
+                        Approve Task
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        to="/all-task"
+                        onClick={() => handleSubMenuClick("all-task")}
+                        className={`block py-2 ${
+                          activeSubMenu === "all-task"
+                            ? "bg-white text-gray-900 pl-5 font-bold"
+                            : ""
+                        }`}
+                      >
+                        All Task
+                      </Link>
+                    </li>
+                  </ul>
                 )}
-               {userType==="user" && (
-                 <ul className="pl-6 flex flex-col gap-5 py-5">
-                 <li>
-                   <Link
-                     to="/my-task"
-                     onClick={() => handleSubMenuClick("my-task")}
-                     className={`block py-2 ${
-                       activeSubMenu === "my-task"
-                         ? "bg-white text-gray-900 pl-5 font-bold"
-                         : ""
-                     }`}
-                   >
-                     My Task
-                   </Link>
-                 </li>
-                 
-                 <li>
-                   <Link
-                     to="/all-task"
-                     onClick={() => handleSubMenuClick("all-task")}
-                     className={`block py-2 ${
-                       activeSubMenu === "all-task"
-                         ? "bg-white text-gray-900 pl-5 font-bold"
-                         : ""
-                     }`}
-                   >
-                     All Task
-                   </Link>
-                 </li>
-               </ul>
-               )}
+                {userType === "user" && (
+                  <ul className="pl-6 flex flex-col gap-5 py-5">
+                    <li>
+                      <Link
+                        to="/my-task"
+                        onClick={() => handleSubMenuClick("my-task")}
+                        className={`block py-2 ${
+                          activeSubMenu === "my-task"
+                            ? "bg-white text-gray-900 pl-5 font-bold"
+                            : ""
+                        }`}
+                      >
+                        My Task
+                      </Link>
+                    </li>
+
+                    <li>
+                      <Link
+                        to="/all-task"
+                        onClick={() => handleSubMenuClick("all-task")}
+                        className={`block py-2 ${
+                          activeSubMenu === "all-task"
+                            ? "bg-white text-gray-900 pl-5 font-bold"
+                            : ""
+                        }`}
+                      >
+                        All Task
+                      </Link>
+                    </li>
+                  </ul>
+                )}
               </div>
             )}
           </li>

@@ -4,11 +4,11 @@ import { Button, Input, Select } from "../../../index";
 import { IoMdPersonAdd } from "react-icons/io";
 
 const AddTask = () => {
-  const [addUser, setAddUser] = useState("");
+  const [addTask, setAddTask] = useState("");
 
-  const handleAddUser = (e) => {
+  const handleAddTask = (e) => {
     e.preventDefault();
-    setAddUser("");
+    setAddTask("");
   };
 
   return (
@@ -16,7 +16,7 @@ const AddTask = () => {
       <div>
         <h1 className="text-2xl flex font-bold uppercase bg-slate-500 text-white px-5 py-2 justify-center items-center">Add Task</h1>
       </div>
-      <form onSubmit={handleAddUser} className="w-full p-5">
+      <form onSubmit={handleAddTask} className="w-full p-5">
         <div className="p-5 flex flex-col justify-between gap-5">
           <div className="flex rounded-lg flex-col shadow-lg shadow-black/15 p-8">
             <div className="mt-3">
@@ -104,7 +104,7 @@ const AddTask = () => {
               />
             </div>
             <div className="mt-5 w-full">
-              <Button action={handleAddUser}>Add Task</Button>
+              <Button action={handleAddTask}>Add Task</Button>
             </div>
           </div>
         </div>
