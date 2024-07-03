@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from "react";
-import { Button, Input, Select } from "../../index";
+import { Button, Input, Select } from "../../../index";
 import { IoMdPersonAdd } from "react-icons/io";
 
 const AddUser = () => {

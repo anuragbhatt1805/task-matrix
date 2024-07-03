@@ -7,10 +7,10 @@ import Dashboard from './dashboard/Dashboard'
 import Sidebar from './dashboard/Sidebar'
 import Home from './dashboard/Home'
 import Layout from './Layout'
-import AddUser from './dashboard/adduser/AddUser'
-import AddProject from './dashboard/addproject/AddProject'
-import AddTask from './dashboard/addtask/AddTask'
-import Calendar from './dashboard/calendar/Calendar'
+import AddUser from './dashboard//users/adduser/AddUser'
+import AddProject from './dashboard/projects/addproject/AddProject'
+import AddTask from './dashboard/tasks/addtask/AddTask'
+import Calendar from './dashboard/users/calendar/Calendar'
 
 export {
   Login,

@@ -1,13 +1,5 @@
 import React from "react";
-import {
-  Inject,
-  Day,
-  Week,
-  WorkWeek,
-  Month,
-  Agenda,
-  ScheduleComponent,
-} from "@syncfusion/ej2-react-schedule";
+
 const Calendar = () => {
   return (
     <div>
@@ -17,9 +9,7 @@ const Calendar = () => {
         </h1>
       </div>
       <div>
-        <ScheduleComponent>
-            <Inject services={[Day, Week, WorkWeek, Month, Agenda]} />
-        </ScheduleComponent>
+        
       </div>
     </div>
   );
