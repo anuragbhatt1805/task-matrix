@@ -3,24 +3,26 @@ import Button from './fields/Button'
 import Input from './fields/Input'
 import Select from './fields/Select'
 
-import AdminLayout from './admin/AdminLayout'
-import Sidebar from './admin/Sidebar'
-import Home from './admin/Home'
+import Dashboard from './dashboard/Dashboard'
+import Sidebar from './dashboard/Sidebar'
+import Home from './dashboard/Home'
 import Layout from './Layout'
-import AddUser from './admin/adduser/AddUser'
-import AddProject from './admin/addproject/AddProject'
-import AddTask from './admin/addtask/AddTask'
+import AddUser from './dashboard/adduser/AddUser'
+import AddProject from './dashboard/addproject/AddProject'
+import AddTask from './dashboard/addtask/AddTask'
+import Calendar from './dashboard/calendar/Calendar'
 
 export {
   Login,
   Select,
+  Input,
+  Button,
   AddProject,
   AddTask,
   AddUser,
+  Calendar,
   Layout,
-  Button,
-  Input,
-  AdminLayout,
+  Dashboard,
   Sidebar,
   Home,
 }

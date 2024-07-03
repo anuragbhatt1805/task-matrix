@@ -7,14 +7,17 @@ const Button = ({
   action = () => {},
   ...props
 }) => {
+
+  const handleClick =(e)=>{
+    e.preventDefault();
+    action();
+  }
   return (
     <button
+    type={type}
       className={`flex flex-row justify-start items-center rounded-xl px-6 py-2  ${className}`}
       {...props}
-      onClick={(e) => {
-        e.preventDefault();
-        action();
-      }}
+      onClick={handleClick}
     >
       {children}
     </button>

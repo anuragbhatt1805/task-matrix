@@ -5,11 +5,43 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { Credentials } from "../sampleData";
+import { login as authLogin } from "../../store/authSlice";
 
 const Login = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { register, handleSubmit } = useForm();
+
+  const onSubmit = (data) => {
+    const { email, password } = data;
+    let userType = null;
+
+    if (
+      email === Credentials.admin.email &&
+      password === Credentials.admin.password
+    ) {
+      userType = "admin";
+    } else if (
+      email === Credentials.user.email &&
+      password === Credentials.user.password
+    ) {
+      userType = "user";
+    } else if (
+      email === Credentials.manager.email &&
+      password === Credentials.manager.password
+    ) {
+      userType = "manager";
+    }
+
+    if (userType) {
+      console.log("User Type", userType);
+      dispatch(authLogin({ userType }));
+      localStorage.setItem("userType", "admin");
+      navigate("/"); // Redirect to the dashboard or main screen
+    } else {
+      alert("Invalid Credentials");
+    }
+  };
 
   return (
     <div className="bg-green-500 h-screen w-screen">
@@ -21,28 +53,34 @@ const Login = () => {
             <h1 className="text-xl">Use Your Domain Account</h1>
           </div>
 
-          <form onSubmit={handleSubmit} className="w-[75%]">
+          <form onSubmit={handleSubmit(onSubmit)} className="w-[75%]">
             <Input
-              as={Input}
-              label="Email"
-              name="email"
+              label="Email:"
               type="email"
               placeholder="Enter your email address"
-              
+              {...register("email", {
+                required: "Email is required",
+                pattern: {
+                  value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                  message: "Invalid email address",
+                },
+              })}
             />
-           
 
             <Input
-              as={Input}
-              label="Password"
-              name="password"
+              label="Password:"
               type="password"
               placeholder="Enter your password"
-             
+              {...register("password", {
+                required: "Password is required",
+                minLength: {
+                  value: 8,
+                  message: "Password must be at least 8 characters",
+                },
+              })}
             />
-           
 
-            <Button type="submit">Login</Button>
+            <Button type="submit" action={()=>console.log("logged in")}>Login</Button>
           </form>
         </div>
       </div>
