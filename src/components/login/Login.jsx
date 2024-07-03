@@ -1,20 +1,15 @@
 import React from "react";
 import { Button, Input } from "../index";
 import Logo from "../../assets/logo.png";
-import { Formik, Form, Field, ErrorMessage } from "formik";
+import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from 'react-redux';
-import { login } from '../../components/features/userSlice';
-
-const credentials = {
-  admin: { email: "admin@example.com", password: "admin123" },
-  user: { email: "user@example.com", password: "user123" },
-  manager: { email: "manager@example.com", password: "manager123" },
-};
+import { useDispatch } from "react-redux";
+import { Credentials } from "../sampleData";
 
 const Login = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const { register, handleSubmit } = useForm();
 
   return (
     <div className="bg-green-500 h-screen w-screen">
@@ -26,87 +21,29 @@ const Login = () => {
             <h1 className="text-xl">Use Your Domain Account</h1>
           </div>
 
-          <Formik
-            initialValues={{ email: "", password: "" }}
-            validate={(values) => {
-              const errors = {};
-              if (!values.email) {
-                errors.email = "Email is required";
-              } else if (
-                !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
-              ) {
-                errors.email = "Invalid email address";
-              }
-              if (!values.password) {
-                errors.password = "Password is required";
-              }
-              return errors;
-            }}
-            onSubmit={(values, { setSubmitting }) => {
-              const { email, password } = values;
-              let userType = null;
-              if (email === credentials.admin.email && password === credentials.admin.password) {
-                userType = "admin";
-              } else if (email === credentials.user.email && password === credentials.user.password) {
-                userType = "user";
-              } else if (email === credentials.manager.email && password === credentials.manager.password) {
-                userType = "manager";
-              }
+          <form onSubmit={handleSubmit} className="w-[75%]">
+            <Input
+              as={Input}
+              label="Email"
+              name="email"
+              type="email"
+              placeholder="Enter your email address"
+              
+            />
+           
 
-              if (userType) {
-                console.log('User Type:', userType);
-                dispatch(login({ userType }));
-                localStorage.setItem("userType", userType);
-                navigate("/");
-              } else {
-                alert("Invalid email or password");
-              }
-              setSubmitting(false);
-            }}
-          >
-            {({
-              values,
-              errors,
-              touched,
-              handleChange,
-              handleBlur,
-              handleSubmit,
-              isSubmitting,
-            }) => (
-              <Form onSubmit={handleSubmit} className="w-[75%]">
-                <Field
-                  as={Input}
-                  label="Email"
-                  name="email"
-                  type="email"
-                  placeholder="Enter your email address"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={values.email}
-                />
-                <ErrorMessage name="email" component="div" className="text-red-600" />
-                
-                <Field
-                  as={Input}
-                  label="Password"
-                  name="password"
-                  type="password"
-                  placeholder="Enter your password"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={values.password}
-                />
-                <ErrorMessage name="password" component="div" className="text-red-600" />
-                
-                <Button
-                  type="submit"
-                  disabled={isSubmitting}
-                >
-                  Login
-                </Button>
-              </Form>
-            )}
-          </Formik>
+            <Input
+              as={Input}
+              label="Password"
+              name="password"
+              type="password"
+              placeholder="Enter your password"
+             
+            />
+           
+
+            <Button type="submit">Login</Button>
+          </form>
         </div>
       </div>
     </div>
