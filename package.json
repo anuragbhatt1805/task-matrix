@@ -6,6 +6,7 @@
   "author": "Anurag Bhatt",
   "dependencies": {
     "@reduxjs/toolkit": "^2.2.6",
+    "@syncfusion/ej2-react-schedule": "^26.1.40",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
