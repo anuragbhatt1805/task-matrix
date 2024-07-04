@@ -36,8 +36,8 @@ const Login = () => {
     if (userType) {
       console.log("User Type", userType);
       dispatch(authLogin({ userType }));
-      localStorage.setItem("userType", "admin");
-      navigate("/"); // Redirect to the dashboard or main screen
+      localStorage.setItem("userType", userType);
+      navigate("/"); 
     } else {
       alert("Invalid Credentials");
     }

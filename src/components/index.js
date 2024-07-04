@@ -12,12 +12,14 @@ import AddFabricator from './dashboard/fabricators/addfabricator/AddFabricator'
 import AddProject from './dashboard/projects/addproject/AddProject'
 import AddTask from './dashboard/tasks/addtask/AddTask'
 import Calendar from './dashboard/users/calendar/Calendar'
+import RadialChart from './charts/RadialChart'
 
 
 export {
   Login,
   Select,
   Input,
+  RadialChart,
   Button,
   AddProject,
   AddTask,
