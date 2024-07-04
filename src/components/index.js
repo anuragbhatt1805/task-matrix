@@ -17,11 +17,17 @@ import ManageTeam from './dashboard/projects/manageteam/ManageTeam'
 import SessionRecode from './dashboard/users/sessionrecord/SessionRecode'
 import TaskRecord from './dashboard/users/taskrecord/TaskRecord'
 import MyTask from './dashboard/tasks/mytask/MyTask'
+import AdminTask from './dashboard/tasks/mytask/admin/AdminTask'
+import ManagerTask from './dashboard/tasks/mytask/manager/ManagerTask'
+import UserTask from './dashboard/tasks/mytask/user/UserTask'
 
 export {
   Login,
   Select,
   Input,
+  AdminTask,
+  ManagerTask,
+  UserTask,
   MyTask,
   ManageTeam,
   TaskRecord,

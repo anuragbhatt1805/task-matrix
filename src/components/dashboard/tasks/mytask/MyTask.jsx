@@ -1,6 +1,7 @@
 import React from "react";
-
+import {AdminTask, ManagerTask, UserTask} from '../../../index'
 const MyTask = () => {
+  const userType = localStorage.getItem("userType");
   return (
     <div className="main-container">
       <div>
@@ -8,7 +9,18 @@ const MyTask = () => {
           My Task
         </h1>
       </div>
-      
+      <div>
+        {userType === "admin" && (
+            <AdminTask />
+        )}
+        {userType === "manager" && (
+            <ManagerTask />
+        )}
+        {userType === "user" && (
+            <UserTask />
+        )}
+
+      </div>
     </div>
   );
 };
