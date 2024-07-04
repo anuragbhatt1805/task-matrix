@@ -13,12 +13,19 @@ import AddProject from './dashboard/projects/addproject/AddProject'
 import AddTask from './dashboard/tasks/addtask/AddTask'
 import Calendar from './dashboard/users/calendar/Calendar'
 import RadialChart from './charts/RadialChart'
-
+import ManageTeam from './dashboard/projects/manageteam/ManageTeam'
+import SessionRecode from './dashboard/users/sessionrecord/SessionRecode'
+import TaskRecord from './dashboard/users/taskrecord/TaskRecord'
+import MyTask from './dashboard/tasks/mytask/MyTask'
 
 export {
   Login,
   Select,
   Input,
+  MyTask,
+  ManageTeam,
+  TaskRecord,
+  SessionRecode,
   RadialChart,
   Button,
   AddProject,
