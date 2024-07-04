@@ -1,9 +1,9 @@
 import React from 'react'
-import {RadialChart} from '../../../index'
+// import {RadialChart} from '../../../index'
 const Allprojects = () => {
   return (
     <div>
-      <RadialChart/>
+      {/* <RadialChart/> */}
     </div>
   )
 }
